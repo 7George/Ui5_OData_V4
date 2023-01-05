@@ -167,6 +167,19 @@ sap.ui.define([
 				}
 			);
 		},
+		onSelectionChange : function (oEvent) {
+			var oDetailArea = this.byId("detailArea"),
+				oLayout = this.byId("defaultLayout"),
+			// get binding of selected item
+				oUserContext = oEvent.getParameters().listItem.getBindingContext();
+
+			// set binding
+			oDetailArea.setBindingContext(oUserContext);
+			// resize view
+			oDetailArea.setVisible(true);
+			oLayout.setSize("60%");
+			oLayout.setResizable(true);
+		},
 		_getText : function (sTextId, aArgs) {
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle().getText(sTextId, aArgs);
 
